@@ -2,8 +2,7 @@ package com.edusol.demospringboot.controller;
 
 
 import com.edusol.demospringboot.model.Employee;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -13,7 +12,7 @@ public class EmployeCrudController {
     ArrayList<Employee> employees= new ArrayList<>();
     //C
 
-    @RequestMapping("/add_emp")
+    @RequestMapping(value = "/add_emp", method = RequestMethod.POST)
     public String addEmp(){
 
         employees.add(new Employee("Raj",1,"CS"));
@@ -21,20 +20,26 @@ public class EmployeCrudController {
     }
 
     //R
-    @RequestMapping("/get_emp")
+    @RequestMapping(value ="/get_emp", method = RequestMethod.GET)
     public  ArrayList<Employee> getEmp(){
 
         return employees;
     }
 
     //U
-    //TODO
+
+    @RequestMapping(value ="/update_emp/{name}", method = RequestMethod.PUT)
+    public String updateEmp(@PathVariable String name){
+
+        employees.get(0).setName(name);
+       return "Employee name updated Successfully as "+name;
+    }
 
     //D
-    @RequestMapping("/delete_emp")
-   public  String remove(){
+    @RequestMapping(value = "/delete_emp",method = RequestMethod.DELETE )
+   public  String remove(@RequestParam int index){
 
-      employees.remove(0);
+      employees.remove(index);
        return "Successfully removed Employee";
    }
 }
