@@ -13,9 +13,9 @@ public class EmployeCrudController {
     //C
 
     @RequestMapping(value = "/add_emp", method = RequestMethod.POST)
-    public String addEmp(){
+    public String addEmp(@RequestBody Employee employee){
 
-        employees.add(new Employee("Raj",1,"CS"));
+        employees.add(employee);
         return "Successfully Added Employee";
     }
 
