@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name="EMPLOYEE_7_BATCH")
-public class Employee {
+@Entity(name="EMPLOYEE_TABLE_BATCH7")
+public class EmployeeTable {
 
     @Id
     @GeneratedValue // auto generate +1
@@ -17,15 +17,16 @@ public class Employee {
 
     int empId;
     String dept;
-
+    double salary;
     //default constructor
-    public Employee() {
+    public EmployeeTable() {
     }
 
-    public Employee(String name, int empId, String dept) {
+    public EmployeeTable(String name, int empId, String dept, double salary) {
         this.name = name;
         this.empId = empId;
         this.dept = dept;
+        this.salary=salary;
     }
 
     public String getName() {
